@@ -160,6 +160,7 @@ def download_mnist(dirpath):
     cmd = ['curl', url, '-o', out_path]
     print('Downloading ', file_name)
     subprocess.call(cmd)
+    subprocess.check_call(cmd)
     cmd = ['gzip', '-d', out_path]
     print('Decompressing ', file_name)
     subprocess.call(cmd)
@@ -169,12 +170,12 @@ def prepare_data_dir(path = './data'):
     os.mkdir(path)
 
 if __name__ == '__main__':
-  args = parser.parse_args()
+  # args = parser.parse_args()
   prepare_data_dir()
 
-  if any(name in args.datasets for name in ['CelebA', 'celebA', 'celebA']):
-    download_celeb_a('./data')
-  if 'lsun' in args.datasets:
-    download_lsun('./data')
-  if 'mnist' in args.datasets:
-    download_mnist('./data')
+  # if any(name in args.datasets for name in ['CelebA', 'celebA', 'celebA']):
+  #   download_celeb_a('./data')
+  # if 'lsun' in args.datasets:
+  #   download_lsun('./data')
+  # if 'mnist' in args.datasets:
+  download_mnist('./data')
